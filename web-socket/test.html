@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sensor Data</title>
+</head>
+<body>
+    <div id="sensor-data"></div>
+    <script>
+        var socket = new WebSocket("ws://localhost:8080/sensors");
+        socket.onmessage = function(event) {
+            var data = JSON.parse(event.data);
+            var div = document.getElementById("sensor-data");
+            div.innerHTML += " value: " + data + "<br>";
+        };
+    </script>
+</body>
+</html>
